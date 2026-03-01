@@ -8,7 +8,7 @@ import {
   CountryReportTable,
   GeoZoneTable,
   PokemonAssetTable,
-} from "@/types";
+} from "@/types/db";
 
 export interface Database {
   pokemonAssets: PokemonAssetTable;

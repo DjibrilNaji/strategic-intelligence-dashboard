@@ -1,10 +1,4 @@
-import {
-  ColumnType,
-  Generated,
-  Insertable,
-  Selectable,
-  Updateable,
-} from "kysely";
+import { Generated, Insertable, Selectable, Updateable } from "kysely";
 
 export interface PokemonAssetTable {
   id: Generated<number>;
@@ -30,7 +24,7 @@ export interface ClimateConditionTable {
   temperature: number;
   windSpeed: number;
   precipitation: number;
-  recordedAt: ColumnType<Date, string | undefined, never>;
+  recordedAt: Generated<Date>;
 }
 
 export interface CountryReportTable {
@@ -41,7 +35,7 @@ export interface CountryReportTable {
   weatherScore: number;
   dominantType: string;
   pokemonNames: string[];
-  calculatedAt: ColumnType<Date, string | undefined, never>;
+  calculatedAt: Generated<Date>;
 }
 
 export type PokemonAsset = Selectable<PokemonAssetTable>;
