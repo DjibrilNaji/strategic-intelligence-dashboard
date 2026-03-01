@@ -1,6 +1,7 @@
 export const routes = {
   home: "/",
-  deepAnalysis: "/deep-analysis",
+  globalReport: "/dashboard/global",
+  deepAnalysis: "/dashboard/deep-analysis",
   api: {
     globalReport: "/reports/global",
     deepAnalysis: "/reports/deep-analysis"

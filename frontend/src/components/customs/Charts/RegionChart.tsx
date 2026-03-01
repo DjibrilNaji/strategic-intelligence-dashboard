@@ -1,36 +1,33 @@
-"use client"
-
 import { Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { RegionScore } from "@/types"
 import { REGION_COLORS } from "@/utils/constant"
 
-interface RegionScoreChartProps {
+interface RegionChartProps {
   data: RegionScore[]
+  title: string
+  description: string
 }
 
-export function RegionScoreChart({ data }: RegionScoreChartProps) {
+export function RegionChart({ data, title, description }: RegionChartProps) {
   const chartData = data.map((item) => ({
     region: item.region,
-    score: item.avgScore
+    score: Number(item.avgScore)
   }))
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Average Score per Region</CardTitle>
-        <CardDescription>Regional performance overview</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
-
       <CardContent>
         <div className="h-72">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
               <XAxis dataKey="region" tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} />
-
               <YAxis tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} />
-
               <Tooltip
                 contentStyle={{
                   backgroundColor: "#000",
@@ -40,12 +37,11 @@ export function RegionScoreChart({ data }: RegionScoreChartProps) {
                 labelStyle={{ color: "#fff" }}
                 formatter={(value: number) => [parseFloat(value.toString()).toFixed(1), "Score"]}
               />
-
               <Bar dataKey="score" radius={[4, 4, 0, 0]}>
                 {chartData.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={REGION_COLORS[index % REGION_COLORS.length]} />
                 ))}
-              </Bar>
+              </Bar>{" "}
             </BarChart>
           </ResponsiveContainer>
         </div>

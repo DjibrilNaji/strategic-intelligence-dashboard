@@ -26,8 +26,8 @@ export async function getGlobalReport(c: Context) {
 }
 
 export async function getDeepAnalysis(c: Context) {
-  const bestCountries = await getTopCountries(db, 5)
-  const worstCountries = await getWeakestCountries(db, 5)
+  const bestCountries = await getTopCountries(db, 10)
+  const worstCountries = await getWeakestCountries(db, 10)
   const averageScorePerRegion = await getAvgScoreByRegion(db)
   const pokemonTypeDistribution = await getTypeDistributionPerCountry(db)
   const allCountryReports = await getAllReports(db)
@@ -56,9 +56,19 @@ export async function getDeepAnalysis(c: Context) {
     averageScorePerRegion: averageScorePerRegionFormatted,
     globalAverageWeatherScore: Math.round(globalAverageWeatherScore * 10) / 10,
     pokemonTypeDistribution,
-    populationVsPowerCorrelation: allCountryReports.map((report) => ({
-      country: report.country,
-      score: report.score
-    }))
+    populationVsPowerCorrelation: await Promise.all(
+      allCountryReports.map(async (r) => {
+        const geoZone = await db
+          .selectFrom("geoZones")
+          .where("country", "=", r.country)
+          .select("population")
+          .executeTakeFirst()
+        return {
+          country: r.country,
+          score: r.score,
+          population: geoZone?.population ?? 0
+        }
+      })
+    )
   })
 }

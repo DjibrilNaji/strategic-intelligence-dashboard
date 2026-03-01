@@ -33,5 +33,5 @@ export interface DeepAnalysisData {
   averageScorePerRegion: RegionScore[]
   globalAverageWeatherScore: number
   pokemonTypeDistribution: PokemonTypeDistribution[]
-  populationVsPowerCorrelation: { country: string; score: string }[]
+  populationVsPowerCorrelation: { country: string; score: string; population: number }[]
 }
