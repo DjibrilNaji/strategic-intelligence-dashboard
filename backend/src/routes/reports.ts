@@ -1,13 +1,10 @@
-import { Hono } from "hono";
+import { Hono } from "hono"
 
-import {
-  getDeepAnalysis,
-  getGlobalReport,
-} from "@/controllers/reportsController";
+import { getDeepAnalysis, getGlobalReport } from "@/controllers/reportsController"
 
-const router = new Hono();
+const router = new Hono()
 
-router.get("/global", getGlobalReport);
-router.get("/deep-analysis", getDeepAnalysis);
+router.get("/global", getGlobalReport)
+router.get("/deep-analysis", getDeepAnalysis)
 
-export default router;
+export default router

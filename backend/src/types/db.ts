@@ -1,55 +1,55 @@
-import { Generated, Insertable, Selectable, Updateable } from "kysely";
+import { Generated, Insertable, Selectable, Updateable } from "kysely"
 
 export interface PokemonAssetTable {
-  id: Generated<number>;
-  name: string;
-  baseStats: number;
-  types: string[];
-  weight: number;
-  height: number;
+  id: Generated<number>
+  name: string
+  baseStats: number
+  types: string[]
+  weight: number
+  height: number
 }
 
 export interface GeoZoneTable {
-  id: Generated<number>;
-  country: string;
-  population: number;
-  region: string;
-  lat: number;
-  lng: number;
+  id: Generated<number>
+  country: string
+  population: number
+  region: string
+  lat: number
+  lng: number
 }
 
 export interface ClimateConditionTable {
-  id: Generated<number>;
-  country: string;
-  temperature: number;
-  windSpeed: number;
-  precipitation: number;
-  recordedAt: Generated<Date>;
+  id: Generated<number>
+  country: string
+  temperature: number
+  windSpeed: number
+  precipitation: number
+  recordedAt: Generated<Date>
 }
 
 export interface CountryReportTable {
-  id: Generated<number>;
-  country: string;
-  region: string;
-  score: number;
-  weatherScore: number;
-  dominantType: string;
-  pokemonNames: string[];
-  calculatedAt: Generated<Date>;
+  id: Generated<number>
+  country: string
+  region: string
+  score: number
+  weatherScore: number
+  dominantType: string
+  pokemonNames: string[]
+  calculatedAt: Generated<Date>
 }
 
-export type PokemonAsset = Selectable<PokemonAssetTable>;
-export type NewPokemonAsset = Insertable<PokemonAssetTable>;
-export type PokemonAssetUpdate = Updateable<PokemonAssetTable>;
+export type PokemonAsset = Selectable<PokemonAssetTable>
+export type NewPokemonAsset = Insertable<PokemonAssetTable>
+export type PokemonAssetUpdate = Updateable<PokemonAssetTable>
 
-export type GeoZone = Selectable<GeoZoneTable>;
-export type NewGeoZone = Insertable<GeoZoneTable>;
-export type GeoZoneUpdate = Updateable<GeoZoneTable>;
+export type GeoZone = Selectable<GeoZoneTable>
+export type NewGeoZone = Insertable<GeoZoneTable>
+export type GeoZoneUpdate = Updateable<GeoZoneTable>
 
-export type ClimateCondition = Selectable<ClimateConditionTable>;
-export type NewClimateCondition = Insertable<ClimateConditionTable>;
-export type ClimateConditionUpdate = Updateable<ClimateConditionTable>;
+export type ClimateCondition = Selectable<ClimateConditionTable>
+export type NewClimateCondition = Insertable<ClimateConditionTable>
+export type ClimateConditionUpdate = Updateable<ClimateConditionTable>
 
-export type CountryReport = Selectable<CountryReportTable>;
-export type NewCountryReport = Insertable<CountryReportTable>;
-export type CountryReportUpdate = Updateable<CountryReportTable>;
+export type CountryReport = Selectable<CountryReportTable>
+export type NewCountryReport = Insertable<CountryReportTable>
+export type CountryReportUpdate = Updateable<CountryReportTable>

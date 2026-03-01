@@ -1,26 +1,14 @@
-import { Kysely } from "kysely";
+import { Kysely } from "kysely"
 
-import { Database } from "@/db";
-import { NewCountryReport } from "@/types/db";
+import { Database } from "@/db"
+import { NewCountryReport } from "@/types/db"
 
-export async function insertReport(
-  db: Kysely<Database>,
-  data: NewCountryReport,
-) {
-  return db
-    .insertInto("countryReports")
-    .values(data)
-    .returningAll()
-    .executeTakeFirstOrThrow();
+export async function insertReport(db: Kysely<Database>, data: NewCountryReport) {
+  return db.insertInto("countryReports").values(data).returningAll().executeTakeFirstOrThrow()
 }
 
 export async function getTopCountries(db: Kysely<Database>, limit = 10) {
-  return db
-    .selectFrom("countryReports")
-    .orderBy("score", "desc")
-    .limit(limit)
-    .selectAll()
-    .execute();
+  return db.selectFrom("countryReports").orderBy("score", "desc").limit(limit).selectAll().execute()
 }
 
 export async function getAvgScoreByRegion(db: Kysely<Database>) {
@@ -30,7 +18,7 @@ export async function getAvgScoreByRegion(db: Kysely<Database>) {
     .select((eb) => eb.fn.avg("score").as("avgScore"))
     .groupBy("region")
     .orderBy("avgScore", "desc")
-    .execute();
+    .execute()
 }
 
 export async function getTypeDistributionPerCountry(db: Kysely<Database>) {
@@ -39,18 +27,13 @@ export async function getTypeDistributionPerCountry(db: Kysely<Database>) {
     .select(["dominantType"])
     .select((eb) => eb.fn.count("id").as("count"))
     .groupBy("dominantType")
-    .execute();
+    .execute()
 }
 
 export async function getWeakestCountries(db: Kysely<Database>, limit = 10) {
-  return db
-    .selectFrom("countryReports")
-    .orderBy("score", "asc")
-    .limit(limit)
-    .selectAll()
-    .execute();
+  return db.selectFrom("countryReports").orderBy("score", "asc").limit(limit).selectAll().execute()
 }
 
 export async function getAllReports(db: Kysely<Database>) {
-  return db.selectFrom("countryReports").selectAll().execute();
+  return db.selectFrom("countryReports").selectAll().execute()
 }
