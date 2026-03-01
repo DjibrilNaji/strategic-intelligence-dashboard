@@ -33,7 +33,7 @@ export async function getAvgScoreByRegion(db: Kysely<Database>) {
     .execute();
 }
 
-export async function getTypeDistribution(db: Kysely<Database>) {
+export async function getTypeDistributionPerCountry(db: Kysely<Database>) {
   return db
     .selectFrom("countryReports")
     .select(["dominantType"])
