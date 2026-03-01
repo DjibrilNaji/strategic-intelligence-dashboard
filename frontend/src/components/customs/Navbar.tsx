@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 import { routes } from "@/routes"
 
 const links = [
-  { href: routes.home, label: "Global Overview", icon: Globe },
+  { href: routes.globalReport, label: "Global Overview", icon: Globe },
   { href: routes.deepAnalysis, label: "Deep Analysis", icon: Search }
 ]
 

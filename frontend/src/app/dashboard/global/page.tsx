@@ -15,6 +15,14 @@ export default function GlobalPage() {
 
   if (isError) return <Error message="Failed to load global report data." />
 
+  if (!data?.bestCountries?.length) {
+    return (
+      <div className="flex h-64 items-center justify-center">
+        <p className="text-muted-foreground">No data available. Please run the seed script.</p>
+      </div>
+    )
+  }
+
   return (
     <div className="flex flex-col gap-6">
       <div>

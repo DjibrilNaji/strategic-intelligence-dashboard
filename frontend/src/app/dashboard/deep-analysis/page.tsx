@@ -18,6 +18,14 @@ export default function DeepAnalysisPage() {
 
   if (isError) return <Error message="Failed to load deep analysis data." />
 
+  if (!data?.globalOverview?.totalCountries) {
+    return (
+      <div className="flex h-64 items-center justify-center">
+        <p className="text-muted-foreground">No data available. Please run the seed script.</p>
+      </div>
+    )
+  }
+
   return (
     <div className="flex flex-col gap-6">
       <div>

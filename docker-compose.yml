@@ -16,5 +16,27 @@ services:
       timeout: 5s
       retries: 5
 
+  backend:
+    build: ./backend
+    container_name: sid_backend
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: postgresql://sid_user:sid_password@postgres:5432/sid_db
+      PORT: 3001
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: sid_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+    depends_on:
+      - backend
+
 volumes:
   postgres_data:

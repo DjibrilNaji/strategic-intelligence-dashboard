@@ -26,7 +26,7 @@ export function GlobalOverviewSection({
       <StatCard
         icon={BarChart3}
         label="Average Score"
-        value={globalAverageScore.toFixed(1)}
+        value={globalAverageScore.toFixed(1) ?? "—"}
         description="Across all countries"
       />
 
@@ -39,7 +39,7 @@ export function GlobalOverviewSection({
             <Badge variant="secondary">Top</Badge>
           </div>
         }
-        description={`Avg score: ${Number(bestRegion.avgScore).toFixed(1)}`}
+        description={`Avg score: ${bestRegion?.avgScore ? Number(bestRegion.avgScore).toFixed(1) : "—"}`}
       />
     </div>
   )
