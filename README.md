@@ -8,6 +8,12 @@ Une application fullstack qui combine les données de 3 APIs publiques pour gén
 **Frontend:** Next.js, TanStack Query, Tailwind CSS, Shadcn, Recharts  
 **Infrastructure:** Docker
 
+## Fonctionnalités
+
+- **Tableau de bord global** — Top 10 pays, distribution des types Pokémon, scores par région, score météo moyen
+- **Analyse approfondie** — Vue détaillée avec meilleurs/pires pays, comparaison des régions, impact météo, corrélation population/puissance
+- **Export PDF** — Génération de rapports PDF personnalisés avec choix du titre et sélection des graphiques à inclure
+
 ## Démarrage
 
 ### Prérequis
@@ -29,7 +35,7 @@ docker compose up --build
 docker compose exec backend node dist/db/seeds/index.js
 ```
 
-**Frontend** : `http://localhost:3000`  
+**Frontend :** `http://localhost:3000`  
 **Backend :** `http://localhost:3001`
 
 ## APIs Utilisées
