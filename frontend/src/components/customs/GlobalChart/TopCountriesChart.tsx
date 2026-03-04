@@ -13,16 +13,15 @@ import { CountryReport } from "@/types"
 import { TOP_COUNTRIES_COLORS } from "@/utils/constant"
 
 const chartConfig = {
-  desktop: {
-    label: "Score"
-  }
+  desktop: { label: "Score" }
 } satisfies ChartConfig
 
 interface TopCountriesChartProps {
   data: CountryReport[]
+  ref?: React.Ref<HTMLDivElement>
 }
 
-export function TopCountriesChart({ data }: TopCountriesChartProps) {
+export function TopCountriesChart({ data, ref }: TopCountriesChartProps) {
   const chartData = data.map((item) => ({
     country: item.country,
     score: parseFloat(item.score)
@@ -34,7 +33,8 @@ export function TopCountriesChart({ data }: TopCountriesChartProps) {
         <CardTitle>Top 10 Countries by Score</CardTitle>
         <CardDescription>Strategic intelligence ranking</CardDescription>
       </CardHeader>
-      <CardContent>
+
+      <CardContent ref={ref}>
         <ChartContainer config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
             <XAxis

@@ -1,4 +1,4 @@
-export interface CountryReport {
+export type CountryReport = {
   id: number
   country: string
   region: string
@@ -9,24 +9,24 @@ export interface CountryReport {
   calculatedAt: string
 }
 
-export interface RegionScore {
+export type RegionScore = {
   region: string
   avgScore: number
 }
 
-export interface PokemonTypeDistribution {
+export type PokemonTypeDistribution = {
   dominantType: string
   count: string
 }
 
-export interface GlobalReportData {
+export type GlobalReportData = {
   bestCountries: CountryReport[]
   averageScorePerRegion: RegionScore[]
   pokemonTypeDistribution: PokemonTypeDistribution[]
   averageWeatherScore: number
 }
 
-export interface DeepAnalysisData {
+export type DeepAnalysisData = {
   globalOverview: { totalCountries: number; globalAverageScore: number; bestRegion: RegionScore }
   bestCountries: CountryReport[]
   worstCountries: CountryReport[]
@@ -34,4 +34,10 @@ export interface DeepAnalysisData {
   globalAverageWeatherScore: number
   pokemonTypeDistribution: PokemonTypeDistribution[]
   populationVsPowerCorrelation: { country: string; score: string; population: number }[]
+}
+
+export type ChartItem = {
+  id: string
+  label: string
+  ref: React.RefObject<HTMLDivElement | null>
 }

@@ -9,9 +9,10 @@ interface TypeChartProps {
   data: PokemonTypeDistribution[]
   title: string
   description: string
+  ref?: React.Ref<HTMLDivElement>
 }
 
-export function TypeChart({ data, title, description }: TypeChartProps) {
+export function TypeChart({ data, title, description, ref }: TypeChartProps) {
   const chartData = data.map((item) => ({
     name: item.dominantType,
     value: parseInt(item.count)
@@ -24,7 +25,7 @@ export function TypeChart({ data, title, description }: TypeChartProps) {
         <CardDescription>{description}</CardDescription>
       </CardHeader>
 
-      <CardContent>
+      <CardContent ref={ref}>
         <div className="h-72">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>

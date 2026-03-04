@@ -8,9 +8,10 @@ interface RegionChartProps {
   data: RegionScore[]
   title: string
   description: string
+  ref?: React.Ref<HTMLDivElement>
 }
 
-export function RegionChart({ data, title, description }: RegionChartProps) {
+export function RegionChart({ data, title, description, ref }: RegionChartProps) {
   const chartData = data.map((item) => ({
     region: item.region,
     score: Number(item.avgScore)
@@ -22,7 +23,7 @@ export function RegionChart({ data, title, description }: RegionChartProps) {
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent ref={ref}>
         <div className="h-72">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
